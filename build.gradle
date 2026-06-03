@@ -1,0 +1,32 @@
+plugins {
+    // Apply the java-library plugin to add support for Java Library
+    id 'java-library'
+}
+
+repositories {
+    // Use jcenter for resolving dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+}
+
+dependencies {
+	//POUR JERSEY:
+	
+// 1. L'API JAX-RS pour le client (utilise le namespace jakarta.*)
+    implementation 'jakarta.ws.rs:jakarta.ws.rs-api:3.0.0'
+    
+// 2. L'implémentation Client de Jersey (3.0.3 est compatible Jakarta EE 10)
+    implementation group: 'org.glassfish.jersey.core', name: 'jersey-client', version: '3.0.3'
+    
+// 3. Le module d'injection de dépendances HK2 pour Jersey 
+//(souvent nécessaire pour que Jersey fonctionne hors d'un conteneur EE)
+    implementation group: 'org.glassfish.jersey.inject', name: 'jersey-hk2', version: '3.0.3'
+    
+// Si vous échangez du JSON, vous avez besoin d'un connecteur JSON (ex: Jackson)
+    implementation 'org.glassfish.jersey.media:jersey-media-json-jackson:3.0.3'
+// Ajoute le Java Activation Framework pour supprimer l'avertissement DataSource
+    implementation 'jakarta.activation:jakarta.activation-api:2.1.2'
+   
+
+
+}
